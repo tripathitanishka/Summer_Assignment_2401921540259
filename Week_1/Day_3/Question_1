@@ -1,0 +1,24 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        //to check the value of first place where 0 occurs
+        int j = -1;
+        for ( int i = 0 ; i < nums.length ; i++){
+            if ( nums[i] == 0){
+        //if zero occurs break and keep the index value in j
+                j = i ;
+                break;
+            }}
+        //if j is still no value of index then there is no zero value and hence just simply end the program
+            if (j == -1){ return;}
+        //now if the j has some other value than -1 begin the loop from where the zero occurs
+        for ( int i = j + 1 ; i < nums.length ; i++){
+        //now if number isn't equal to it is swapped.
+            if ( nums[i] != 0){
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                j++;
+            }
+        }
+    }
+}
