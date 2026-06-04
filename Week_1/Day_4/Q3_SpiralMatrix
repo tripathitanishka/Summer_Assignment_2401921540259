@@ -1,0 +1,43 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int left = 0; int right = col - 1;int top = 0 ;int bot = row-1;
+
+
+        //this is for thw loop
+        while (left <= right && top <= bot) {
+
+            // to mov right side just as right hits we need to move bottom
+            for (int j = left; j <= right; j++) {
+                ans.add(matrix[top][j]);
+            }
+            top++;
+
+            // so bottom we go but as in the last row go left
+            for (int i = top; i <= bot; i++) {
+                ans.add(matrix[i][right]);
+            }
+            right--;
+
+            // left se move on to the top but ofcourse just before the first rpw.
+            if (top <= bot) {
+                for (int j = right; j >= left; j--) {
+                    ans.add(matrix[bot][j]);
+                }
+                bot--;
+            }
+
+            // now this for moving right
+            if (left <= right) {
+                for (int i = bot; i >= top; i--) {
+                    ans.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+
+        return ans;
+    }
+}
