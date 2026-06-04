@@ -1,0 +1,35 @@
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        //take row length as same as matrix length i.e. no of rows 
+        int rows = mat.length;
+        //input col length with this it takes suppose the first row and calculate length of that row like number of elements in that ro
+        int cols = mat[0].length;
+
+        //if the number of elements aren't equal in original and required matrix then return the original matrix only.
+        if ( rows * cols != r * c) return mat;
+
+        //now calculation of output matrix begins...
+        int output_mat[][] = new int[r][c] ;
+        int row_no = 0;
+        int col_no = 0;
+        // for loops for rows and columns of original array
+        for ( int i = 0 ; i < rows ; i++){
+            for ( int j = 0 ; j < cols ; j++){
+
+                //put og array elements in  the array elements
+                output_mat[row_no][col_no] = mat[i][j];
+                //increment column no in the new array
+                col_no = col_no + 1;
+
+                // now if col no is equal to the required columns in the required array move to the next line.
+                if (col_no == c){
+                    col_no=0;
+                    row_no++;
+                }
+            }
+        }
+
+        // return output now.
+        return output_mat;
+    }
+}
