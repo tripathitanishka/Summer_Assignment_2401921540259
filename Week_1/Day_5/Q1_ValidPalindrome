@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        //index the first indexing of first element is 0
+        int left = 0 ;
+        //indexing of last element is length of string -1
+        int right = s.length() - 1 ; 
+        //to check palindrome the left should be less than right however if left is more than right ti mean the index has headed the string.
+        while ( left < right){
+
+            //while left is less than right and that character is not a letter or digit we omit it . it is to remove the spaces and all for half the string.
+            while ( left <  right && (!Character.isLetterOrDigit(s.charAt(left)))){
+                left++;
+            }
+            //this is for the other half
+            while ( left < right && (!Character.isLetterOrDigit(s.charAt(right)))){
+                right--;
+            }
+
+            //now if character is different cased ot will return diff ans hence we make all the letter to small letters.
+            if (Character.toLowerCase(s.charAt(left))
+                != Character.toLowerCase(s.charAt(right))) {
+                return false;
+            }
+
+            //incrementation of letters from left and moving left of right side.
+            left++;
+            right--;
+        }
+        return true;
+        
+    }
+}
