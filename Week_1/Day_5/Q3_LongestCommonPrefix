@@ -1,0 +1,18 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        // check if string is nothing or null
+        if (strs == null || strs.length == 0) return "";
+
+        //initial index assume to be zero
+        String prefix = strs[0];
+        // now compare begin with first index
+        for (int i = 1; i < strs.length; i++) {
+            // now moving on through loop indexOf return where that substring firstocurs
+            while (strs[i].indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) return "";
+            }
+        }
+        
+        return prefix;
+}}
