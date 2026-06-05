@@ -1,0 +1,20 @@
+class Solution {
+    public void reverseString(char[] s) {
+      //first index = 0
+        int left = 0 ;
+      //last index length-1 ofc
+        int right = s.length - 1 ;
+      //define acharacter temp it is a temporary variable to store the character while swapping 
+        char temp ;
+      //while left < right leads us to exactly mid of str l++ r--
+        while (left < right ){
+          //swap now
+            temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+            left++;
+            right--;
+
+        }
+    }
+}
