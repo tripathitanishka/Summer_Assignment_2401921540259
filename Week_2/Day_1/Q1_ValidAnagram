@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if ( s.length() != t.length()) return false;
+        // if sateent tells that if the two words aren't of same length they cannot possibly be anagram
+        //then create a new array
+        int[] freq = new int[26];
+        // loop of that array to add the characters
+        for (int i = 0; i < s.length(); i++) {
+            freq[s.charAt(i) - 'a']++;
+            freq[t.charAt(i) - 'a']--;
+        }
+        // the array freq contains the difference in letter counts between s and t.
+        for (int count : freq) {
+            if (count != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
