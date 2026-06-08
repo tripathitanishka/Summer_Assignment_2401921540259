@@ -1,0 +1,24 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+          // 26 boxes for a-z
+        int[] freq = new int[26];
+        // Count how many times each letter appears in magazine
+        for (int i = 0; i < magazine.length(); i++) {
+            char ch = magazine.charAt(i);
+            freq[ch - 'a']++; // Convert letter to index
+        }
+        // Try to use letters for ransomNote
+        for (int i = 0; i < ransomNote.length(); i++) {
+            char ch = ransomNote.charAt(i);
+            // Use one occurrence of this letter
+            freq[ch - 'a']--;
+            // If count becomes negative,
+            // we needed more of this letter than magazine had
+            if (freq[ch - 'a'] < 0) {
+                return false;
+            }
+        }
+        // All required letters were available
+        return true;
+    }
+}
