@@ -1,0 +1,33 @@
+interface Playable {
+    void play();
+}
+// Veena class implementing Playable
+class Veena implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Playing Veena");
+    }
+}
+// Saxophone class implementing Playable
+class Saxophone implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Playing Saxophone");
+    }}
+// Test class
+public class Test {
+    public static void main(String[] args) {
+        // a. Create Veena object and call play()
+        Veena v = new Veena();
+        v.play();
+        // b. Create Saxophone object and call play()
+        Saxophone s = new Saxophone();
+
+        s.play();
+        // c. Use Playable reference
+        Playable p;
+        p = new Veena();
+        p.play();
+        p = new Saxophone();
+        p.play();}
+}
