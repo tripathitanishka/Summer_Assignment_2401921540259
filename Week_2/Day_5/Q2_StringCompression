@@ -1,0 +1,29 @@
+class Solution {
+    public int compress(char[] chars) {
+        // index is where we write the answer
+        int index = 0;
+        // i is used to traverse the array
+        int i = 0;
+        while (i < chars.length) {
+            char currentChar = chars[i];
+            // Count how many times char occurs
+            int count = 0;
+            // Count consecutive same characters
+            while (i < chars.length && chars[i] == currentChar) {
+                count++;
+                i++;}
+            // Write the character
+            chars[index] = currentChar;
+            index++;
+            // If count > 1, write digits
+            if (count > 1) {
+                String s = Integer.toString(count);
+                for (char c : s.toCharArray()) {
+                    chars[index] = c;
+                    index++;
+                }
+            }
+        }
+return index;
+    }
+}
